@@ -66,37 +66,9 @@ gcloud compute ssh $VM_NAME --zone=$ZONE --command="
         echo '✅ Docker ya está instalado'
     fi
     
-    # Instalar Git si no está instalado
-    if ! command -v git &> /dev/null; then
-        echo '📚 Instalando Git...'
-        sudo apt-get update
-        sudo apt-get install -y git
-        echo '✅ Git instalado'
-    else
-        echo '✅ Git ya está instalado'
-    fi
+    echo '✅ Git ya está disponible en Container-Optimized OS'
     
-    # Instalar Node.js si no está instalado
-    if ! command -v node &> /dev/null; then
-        echo '📦 Instalando Node.js...'
-        curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-        sudo apt-get install -y nodejs
-        echo '✅ Node.js instalado'
-    else
-        echo '✅ Node.js ya está instalado'
-    fi
-    
-    # Instalar Yarn si no está instalado
-    if ! command -v yarn &> /dev/null; then
-        echo '🧶 Instalando Yarn...'
-        curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-        echo 'deb https://dl.yarnpkg.com/debian/ stable main' | sudo tee /etc/apt/sources.list.d/yarn.list
-        sudo apt-get update
-        sudo apt-get install -y yarn
-        echo '✅ Yarn instalado'
-    else
-        echo '✅ Yarn ya está instalado'
-    fi
+    echo '✅ Usando Container-Optimized OS - Node.js y Yarn no son necesarios (usamos Docker)'
     
     echo '📂 Clonando/actualizando repositorio...'
     
