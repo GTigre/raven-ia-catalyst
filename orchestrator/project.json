@@ -1,0 +1,59 @@
+{
+  "name": "orchestrator",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "orchestrator/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "platform": "node",
+        "outputPath": "dist/orchestrator",
+        "format": ["cjs"],
+        "bundle": false,
+        "main": "orchestrator/src/main.ts",
+        "tsConfig": "orchestrator/tsconfig.app.json",
+        "assets": ["orchestrator/src/assets"],
+        "generatePackageJson": true,
+        "esbuildOptions": {
+          "sourcemap": true,
+          "outExtension": {
+            ".js": ".js"
+          }
+        }
+      },
+      "configurations": {
+        "development": {},
+        "production": {
+          "esbuildOptions": {
+            "sourcemap": false,
+            "outExtension": {
+              ".js": ".js"
+            }
+          }
+        }
+      }
+    },
+    "serve": {
+      "continuous": true,
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "dependsOn": ["build"],
+      "options": {
+        "buildTarget": "orchestrator:build",
+        "runBuildTargetDependencies": false
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "orchestrator:build:development"
+        },
+        "production": {
+          "buildTarget": "orchestrator:build:production"
+        }
+      }
+    }
+  },
+  "tags": []
+}

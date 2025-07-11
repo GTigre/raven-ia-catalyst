@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "name": "raven-ia-catalyst-frontend",
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/next"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ],
+  "env": {
+    "NEXT_PUBLIC_STACK_AI_API_URL": "@stack_ai_api_url",
+    "NEXT_PUBLIC_STACK_AI_API_KEY": "@stack_ai_api_key"
+  }
+} 
