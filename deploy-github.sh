@@ -93,12 +93,12 @@ gcloud compute ssh $VM_NAME --zone=$ZONE --command="
     sudo docker build -t raven-frontend:latest .
     
     echo '🚀 Ejecutando aplicación...'
-    sudo docker run -d \
-        --name raven-frontend \
-        --restart unless-stopped \
-        -p 80:3001 \
-        -p 3001:3001 \
-        raven-frontend:latest
+              sudo docker run -d \
+            --name raven-frontend \
+            --restart unless-stopped \
+            -p 80:3000 \
+            -p 3001:3000 \
+            raven-frontend:latest
     
     echo '✅ Aplicación desplegada exitosamente!'
     echo '🌐 La aplicación debería estar disponible en:'
