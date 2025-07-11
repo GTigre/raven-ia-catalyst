@@ -23,9 +23,12 @@ import {
   VisibilityOff
 } from '@mui/icons-material';
 import { useRouter } from 'next/navigation';
+import { useLanguage } from '../../contexts/LanguageContext';
+import Header from '../../components/Header';
 
 export default function LoginPage() {
   const router = useRouter();
+  const { t } = useLanguage();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -34,17 +37,17 @@ export default function LoginPage() {
 
   const demoUsers = [
     {
-      name: 'Super Admin',
+      name: t('demoUsers.superAdmin'),
       email: 'admin@raven.com',
       password: 'admin123',
-      role: 'Administrator',
+      role: t('demoUsers.administrator'),
       color: '#1F2937'
     },
     {
-      name: 'Demo User',
+      name: t('demoUsers.demoUser'),
       email: 'demo@raven.com',
       password: 'demo123',
-      role: 'User',
+      role: t('demoUsers.user'),
       color: '#6B7280'
     }
   ];
@@ -78,12 +81,12 @@ export default function LoginPage() {
   return (
     <Box sx={{ 
       minHeight: '100vh', 
-      bgcolor: 'background.default',
-      display: 'flex',
-      alignItems: 'center',
-      py: 4
+      bgcolor: 'background.default'
     }}>
-      <Container maxWidth="md">
+      {/* Header */}
+      <Header showAuthButtons={false} showDashboardButton={false} />
+      
+      <Container maxWidth="md" sx={{ py: 4 }}>
         <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 4, alignItems: 'center' }}>
           {/* Login Form */}
           <Box sx={{ flex: 1, width: '100%' }}>
@@ -102,18 +105,18 @@ export default function LoginPage() {
                   src="/raven-logo.png"
                   alt="Raven Logo"
                   sx={{ 
-                    width: 64, 
-                    height: 64, 
+                    width: 80, 
+                    height: 80, 
                     mb: 2,
-                    borderRadius: '50%',
-                    objectFit: 'cover'
+                    borderRadius: '8px',
+                    objectFit: 'contain'
                   }}
                 />
                 <Typography variant="h4" component="h1" gutterBottom sx={{ fontWeight: 'bold', color: 'text.primary' }}>
-                  IA Catalyst
+                  {t('login.title')}
                 </Typography>
                 <Typography variant="body1" color="text.secondary" align="center">
-                  Sign in to access the platform
+                  {t('login.subtitle')}
                 </Typography>
               </Box>
 
@@ -126,7 +129,7 @@ export default function LoginPage() {
               <form onSubmit={handleSubmit}>
                 <TextField
                   fullWidth
-                  label="Email"
+                  label={t('login.email')}
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -136,7 +139,7 @@ export default function LoginPage() {
                 />
                 <TextField
                   fullWidth
-                  label="Password"
+                  label={t('login.password')}
                   type={showPassword ? 'text' : 'password'}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -161,7 +164,7 @@ export default function LoginPage() {
                   ) : (
                     <>
                       <LoginIcon sx={{ mr: 1 }} />
-                      Sign In
+                      {t('login.loginButton')}
                     </>
                   )}
                 </Button>
@@ -177,7 +180,7 @@ export default function LoginPage() {
               textAlign: 'center',
               mb: 3
             }}>
-              Demo Users
+              {t('demoUsers.title')}
             </Typography>
             <Typography variant="body2" color="text.secondary" align="center" sx={{ mb: 3 }}>
               Use these credentials to test the platform

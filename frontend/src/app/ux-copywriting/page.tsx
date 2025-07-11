@@ -14,9 +14,11 @@ import {
   Paper
 } from '@mui/material';
 import { Home, Edit, Psychology, Lightbulb, TrendingUp } from '@mui/icons-material';
+import { useLanguage } from '../../contexts/LanguageContext';
 import UXCopywritingChat from '../../components/UXCopywritingChat';
 
 export default function UXCopywritingPage() {
+  const { t } = useLanguage();
   const [generatedCopies, setGeneratedCopies] = useState<string[]>([]);
 
   const handleCopyGenerated = (copy: string) => {
@@ -25,17 +27,17 @@ export default function UXCopywritingPage() {
 
   const copywritingTips = [
     {
-      title: "Be Clear and Concise",
+      title: t('uxCopywriting.tips.clarity'),
       description: "Use simple language that users can understand quickly",
       icon: <Lightbulb />
     },
     {
-      title: "Focus on Benefits",
+      title: t('uxCopywriting.tips.userCentric'),
       description: "Highlight what users gain, not just features",
       icon: <TrendingUp />
     },
     {
-      title: "Create Urgency",
+      title: t('uxCopywriting.tips.actionable'),
       description: "Use action-oriented language that motivates users",
       icon: <Psychology />
     }
@@ -60,24 +62,24 @@ export default function UXCopywritingPage() {
           href="/dashboard"
         >
           <Home sx={{ mr: 0.5 }} fontSize="inherit" />
-          Dashboard
+          {t('dashboard.title')}
         </Link>
         <Typography
           sx={{ display: 'flex', alignItems: 'center' }}
           color="text.primary"
         >
           <Edit sx={{ mr: 0.5 }} fontSize="inherit" />
-          UX Copywriting Assistant
+          {t('uxCopywriting.title')}
         </Typography>
       </Breadcrumbs>
 
       {/* Header */}
       <Box sx={{ mb: 4, textAlign: 'center' }}>
         <Typography variant="h3" component="h1" gutterBottom sx={{ fontWeight: 'bold', color: 'text.primary' }}>
-          UX Copywriting Assistant
+          {t('uxCopywriting.title')}
         </Typography>
         <Typography variant="h6" color="text.secondary" sx={{ maxWidth: 600, mx: 'auto' }}>
-          AI-powered chatbot to help you create, improve, and optimize copy for better user experiences
+          {t('uxCopywriting.subtitle')}
         </Typography>
       </Box>
 
@@ -131,7 +133,7 @@ export default function UXCopywritingPage() {
           <Card sx={{ mb: 3 }}>
             <CardContent>
               <Typography variant="h6" sx={{ mb: 2, fontWeight: 'bold' }}>
-                UX Copywriting Tips
+                {t('uxCopywriting.tips.title')}
               </Typography>
               {copywritingTips.map((tip, index) => (
                 <Box key={index} sx={{ mb: 2, display: 'flex', alignItems: 'flex-start' }}>

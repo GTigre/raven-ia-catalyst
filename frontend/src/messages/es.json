@@ -1,0 +1,156 @@
+{
+  "navigation": {
+    "login": "Iniciar Sesión",
+    "signup": "Registrarse",
+    "dashboard": "Panel de Control",
+    "notifications": "Notificaciones"
+  },
+  "home": {
+    "title": "Disrumpe con inteligencia, escala con propósito.",
+    "subtitle": "Plataforma SaaS que permite a equipos de diseño, producto y experiencia del cliente aplicar inteligencia artificial para validar, crear y mejorar experiencias digitales.",
+    "getStarted": "Comenzar Gratis",
+    "viewDemo": "Ver Demo"
+  },
+  "modules": {
+    "title": "Módulos MVP",
+    "syntheticUsers": {
+      "title": "Generador de Usuarios Sintéticos",
+      "description": "Crear perfiles de usuarios realistas con IA para validar experiencias digitales.",
+      "status": "Activo"
+    },
+    "inDevelopment": "En Desarrollo",
+    "promptBuilder": {
+      "title": "Estudio Constructor de Prompts",
+      "description": "Editor visual para crear y gestionar prompts reutilizables por industria.",
+      "status": "Activo"
+    },
+    "uxWriter": {
+      "title": "Escritor UX con IA",
+      "description": "Generar textos UX consistentes adaptados a la voz de tu marca.",
+      "status": "Activo"
+    },
+    "comparator": {
+      "title": "Comparador IA vs Real",
+      "description": "Comparar retroalimentación de usuarios sintéticos con datos reales para validar hipótesis.",
+      "status": "Activo"
+    },
+    "projectManagement": {
+      "title": "Gestión de Proyectos",
+      "description": "Organizar experimentos, resultados y colaborar con tu equipo en tiempo real.",
+      "status": "Activo"
+    },
+    "analytics": {
+      "title": "Panel de Analíticas",
+      "description": "Visualizar KPIs, métricas de validación e insights de tus experimentos.",
+      "status": "Activo"
+    }
+  },
+  "userProfiles": {
+    "title": "Perfiles de Usuario",
+    "uxResearcher": {
+      "title": "Investigador UX",
+      "description": "Validar hipótesis rápidamente con usuarios sintéticos y datos reales."
+    },
+    "productManager": {
+      "title": "Product Manager",
+      "description": "Tomar decisiones basadas en datos y justificar cambios con métricas."
+    },
+    "uxWriter": {
+      "title": "Escritor UX",
+      "description": "Acelerar la creación de contenido UX consistente y efectivo."
+    }
+  },
+  "demoUsers": {
+    "title": "Usuarios Demo",
+    "superAdmin": "Super Administrador",
+    "demoUser": "Usuario Demo",
+    "administrator": "Administrador",
+    "user": "Usuario"
+  },
+  "footer": {
+    "poweredBy": "IA Catalyst - Impulsado por Next.js 15 + React 19 + Material-UI + NestJS + PostgreSQL"
+  },
+  "dashboard": {
+    "title": "Panel de Control",
+    "welcome": "Bienvenido a IA Catalyst",
+    "subtitle": "Elige un módulo para comenzar",
+    "syntheticUsers": "Usuarios Sintéticos",
+    "syntheticUsersDesc": "Generar y validar perfiles de usuarios sintéticos con IA",
+    "uxCopywriting": "Copywriting UX",
+    "uxCopywritingDesc": "Asistente de IA para crear contenido UX efectivo",
+    "stackDemo": "Demo Stack AI",
+    "stackDemoDesc": "Probar integración con plataforma Stack AI"
+  },
+  "syntheticUsers": {
+    "title": "Generador de Usuarios Sintéticos",
+    "generateProfile": "Generar Perfil",
+    "simulateConversation": "Simular Conversación",
+    "validateExperience": "Validar Experiencia",
+    "compareFeedback": "Comparar Retroalimentación",
+    "userDescription": "Descripción del Usuario",
+    "userDescriptionPlaceholder": "Describe el tipo de usuario que quieres generar (ej: 'Joven profesional interesado en tecnología')",
+    "generate": "Generar",
+    "generating": "Generando...",
+    "scenario": "Escenario",
+    "scenarioPlaceholder": "Describe el escenario para la conversación (ej: 'Usuario tratando de comprar un producto en línea')",
+    "simulate": "Simular",
+    "simulating": "Simulando...",
+    "documentUrl": "URL del Documento",
+    "documentUrlPlaceholder": "URL del documento o prototipo a validar",
+    "validate": "Validar",
+    "validating": "Validando...",
+    "realFeedback": "Retroalimentación de Usuario Real",
+    "realFeedbackPlaceholder": "Ingresa retroalimentación de usuario real para comparar con la sintética",
+    "compare": "Comparar",
+    "comparing": "Comparando...",
+    "error": "Error",
+    "success": "Éxito",
+    "profileGenerated": "¡Perfil de usuario generado exitosamente!",
+    "conversationSimulated": "¡Conversación simulada exitosamente!",
+    "experienceValidated": "¡Experiencia validada exitosamente!",
+    "feedbackCompared": "¡Comparación de retroalimentación completada exitosamente!"
+  },
+  "uxCopywriting": {
+    "title": "Asistente de Copywriting UX",
+    "subtitle": "Asistente impulsado por IA para crear contenido UX efectivo",
+    "chatPlaceholder": "Pregúntame cualquier cosa sobre copywriting UX...",
+    "send": "Enviar",
+    "tips": {
+      "title": "Consejos de Copywriting UX",
+      "clarity": "Ser Claro y Conciso",
+      "userCentric": "Enfocarse en Beneficios",
+      "actionable": "Usar Lenguaje Accionable",
+      "consistent": "Mantener tono consistente",
+      "accessible": "Escribir para accesibilidad"
+    },
+    "history": {
+      "title": "Conversaciones Recientes",
+      "empty": "No hay conversaciones recientes"
+    }
+  },
+  "login": {
+    "title": "Iniciar Sesión",
+    "subtitle": "Inicia sesión para acceder a la plataforma",
+    "email": "Correo Electrónico",
+    "password": "Contraseña",
+    "loginButton": "Iniciar Sesión",
+    "signupLink": "¿No tienes cuenta? Regístrate",
+    "forgotPassword": "¿Olvidaste tu contraseña?"
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Error",
+    "success": "Éxito",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "previous": "Anterior",
+    "close": "Cerrar",
+    "open": "Abrir",
+    "yes": "Sí",
+    "no": "No"
+  }
+} 

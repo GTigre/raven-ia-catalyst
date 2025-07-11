@@ -49,11 +49,14 @@ import {
   Assignment
 } from '@mui/icons-material';
 import { useRouter } from 'next/navigation';
+import { useLanguage } from '../../contexts/LanguageContext';
+import Header from '../../components/Header';
 
 export default function DashboardPage() {
   const router = useRouter();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const { t } = useLanguage();
   const [user, setUser] = useState<any>(null);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -81,61 +84,76 @@ export default function DashboardPage() {
   };
 
   const modules = [
+    // Active modules (clickable)
     {
-      title: 'Generador de Usuarios Sintéticos',
-      description: 'Crea perfiles de usuarios realistas impulsados por IA',
+      title: t('dashboard.syntheticUsers'),
+      description: t('dashboard.syntheticUsersDesc'),
       icon: <Psychology />,
       color: '#6B7280',
       stats: '12 usuarios creados',
-      status: 'Activo',
-      path: '/synthetic-users'
+      status: t('modules.syntheticUsers.status'),
+      path: '/synthetic-users',
+      isActive: true
     },
     {
-      title: 'Prompt Builder Studio',
-      description: 'Visual editor for reusable prompts',
-      icon: <Build />,
-      color: '#4B5563',
-      stats: '8 prompts saved',
-      status: 'Active',
-      path: '/prompts'
-    },
-    {
-      title: 'UX Copywriting Assistant',
-      description: 'AI-powered chatbot for creating and improving UX copy',
+      title: t('dashboard.uxCopywriting'),
+      description: t('dashboard.uxCopywritingDesc'),
       icon: <Edit />,
       color: '#374151',
       stats: '24 texts generated',
-      status: 'Active',
-      path: '/ux-copywriting'
+      status: t('modules.syntheticUsers.status'),
+      path: '/ux-copywriting',
+      isActive: true
+    },
+    // In Development modules (read only)
+    {
+      title: t('modules.promptBuilder.title'),
+      description: t('modules.promptBuilder.description'),
+      icon: <Build />,
+      color: '#9CA3AF',
+      stats: '8 prompts saved',
+      status: t('modules.inDevelopment'),
+      path: null,
+      isActive: false
     },
     {
-      title: 'AI vs Real Comparator',
-      description: 'Compare synthetic vs real feedback',
+      title: t('modules.comparator.title'),
+      description: t('modules.comparator.description'),
       icon: <Compare />,
-      color: '#1F2937',
+      color: '#9CA3AF',
       stats: '3 comparisons',
-      status: 'Active',
-      path: '/comparator'
+      status: t('modules.inDevelopment'),
+      path: null,
+      isActive: false
     },
     {
-      title: 'Project Management',
-      description: 'Organize your experiments',
+      title: t('modules.projectManagement.title'),
+      description: t('modules.projectManagement.description'),
       icon: <Assignment />,
-      color: '#6B7280',
+      color: '#9CA3AF',
       stats: '5 active projects',
-      status: 'Active',
-      path: '/projects'
+      status: t('modules.inDevelopment'),
+      path: null,
+      isActive: false
     },
     {
-      title: 'Analytics Dashboard',
-      description: 'Visualize metrics and KPIs',
+      title: t('modules.analytics.title'),
+      description: t('modules.analytics.description'),
       icon: <Analytics />,
-      color: '#4B5563',
+      color: '#9CA3AF',
       stats: '15 metrics',
-      status: 'Active',
-      path: '/analytics'
+      status: t('modules.inDevelopment'),
+      path: null,
+      isActive: false
     }
   ];
+
+  // Sort modules: active first, then in development
+  const sortedModules = [...modules].sort((a, b) => {
+    if (a.isActive && !b.isActive) return -1;
+    if (!a.isActive && b.isActive) return 1;
+    return 0;
+  });
 
   const quickStats = [
     {
@@ -185,57 +203,7 @@ export default function DashboardPage() {
   return (
     <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
       {/* Header */}
-      <AppBar position="static" elevation={0}>
-        <Toolbar>
-          {isMobile && (
-            <IconButton
-              color="inherit"
-              aria-label="menu"
-              onClick={() => setDrawerOpen(true)}
-              sx={{ mr: 2 }}
-            >
-              <MenuIcon />
-            </IconButton>
-          )}
-          
-          <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1 }}>
-            <Box
-              component="img"
-              src="/raven-logo.png"
-              alt="IA Catalyst Logo"
-              sx={{ 
-                width: 60, 
-                height: 60, 
-                mr: 2,
-                borderRadius: '50%',
-                objectFit: 'contain'
-              }}
-            />
-            <Typography variant="h6" component="div" sx={{ fontWeight: 'bold', color: 'text.primary' }}>
-              IA Catalyst
-            </Typography>
-          </Box>
-          
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-            <IconButton color="inherit">
-              <Notifications />
-            </IconButton>
-            <Box sx={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }} onClick={handleMenuOpen}>
-              <Avatar sx={{ bgcolor: user.color, mr: 1 }}>
-                <Person />
-              </Avatar>
-              <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-                <Typography variant="body2" sx={{ fontWeight: 'bold', color: 'text.primary' }}>
-                  {user.name}
-                </Typography>
-                <Typography variant="caption" color="text.secondary">
-                  {user.role}
-                </Typography>
-              </Box>
-            </Box>
-          </Box>
-        </Toolbar>
-      </AppBar>
+      <Header />
 
       {/* Mobile Drawer */}
       <Drawer
@@ -287,10 +255,10 @@ export default function DashboardPage() {
         {/* Welcome Section */}
         <Box sx={{ mb: 4 }}>
           <Typography variant="h4" component="h1" gutterBottom sx={{ fontWeight: 'bold', color: 'text.primary' }}>
-            Welcome, {user.name}
+            {t('dashboard.welcome')}, {user.name}
           </Typography>
           <Typography variant="body1" color="text.secondary">
-            IA Catalyst Control Panel
+            {t('dashboard.subtitle')}
           </Typography>
         </Box>
 
@@ -341,19 +309,23 @@ export default function DashboardPage() {
             Available Modules
           </Typography>
           <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 3 }}>
-            {modules.map((module, index) => (
+            {sortedModules.map((module, index) => (
               <Box key={index} sx={{ flex: { xs: '1 1 100%', sm: '1 1 calc(50% - 12px)', md: '1 1 calc(33.333% - 16px)' } }}>
                 <Card sx={{ 
                   height: '100%',
                   borderRadius: 2,
                   transition: 'all 0.2s ease',
-                  cursor: 'pointer',
-                  '&:hover': { 
+                  cursor: module.isActive ? 'pointer' : 'not-allowed',
+                  opacity: module.isActive ? 1 : 0.6,
+                  filter: module.isActive ? 'none' : 'grayscale(40%)',
+                  '&:hover': module.isActive ? { 
                     transform: 'translateY(-4px)',
                     boxShadow: 3
+                  } : {
+                    opacity: 0.7
                   }
                 }}
-                onClick={() => module.path && router.push(module.path)}
+                onClick={() => module.isActive && module.path && router.push(module.path)}
                 >
                   <CardContent sx={{ p: 3 }}>
                     <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
@@ -366,7 +338,7 @@ export default function DashboardPage() {
                         </Typography>
                         <Chip 
                           label={module.status} 
-                          color="primary" 
+                          color={module.isActive ? "success" : "default"}
                           size="small" 
                           sx={{ fontWeight: 500 }}
                         />
@@ -380,11 +352,12 @@ export default function DashboardPage() {
                         {module.stats}
                       </Typography>
                       <Button 
-                        variant="outlined" 
+                        variant={module.isActive ? "outlined" : "text"}
                         size="small"
                         sx={{ borderRadius: 1 }}
+                        disabled={!module.isActive}
                       >
-                        Open
+                        {module.isActive ? "Open" : "Read Only"}
                       </Button>
                     </Box>
                   </CardContent>

@@ -1,6 +1,7 @@
 import './global.css';
 import { Inter } from 'next/font/google';
 import ThemeRegistry from './ThemeRegistry';
+import { LanguageProvider } from '../contexts/LanguageContext';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -17,9 +18,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ThemeRegistry>
-          {children}
-        </ThemeRegistry>
+        <LanguageProvider>
+          <ThemeRegistry>
+            {children}
+          </ThemeRegistry>
+        </LanguageProvider>
       </body>
     </html>
   );
