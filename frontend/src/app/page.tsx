@@ -185,13 +185,6 @@ export default function LandingPage() {
             >
               {t('home.getStarted')}
             </Button>
-            <Button 
-              variant="outlined" 
-              size="large" 
-              sx={{ borderRadius: 3, px: 4, py: 1.5 }}
-            >
-              {t('home.viewDemo')}
-            </Button>
           </Box>
         </Box>
 
