@@ -6,7 +6,7 @@
 set -e
 
 # Configuration
-PROJECT_ID="raven-ia-catalyst-prod"
+PROJECT_ID="ia-catalyst"
 ZONE="us-central1-a"
 VM_NAME="raven-deployment-vm"
 IMAGE_NAME="raven-frontend"
@@ -99,7 +99,7 @@ cat > vm-deploy.sh << 'EOF'
 #!/bin/bash
 set -e
 
-PROJECT_ID="raven-ia-catalyst-prod"
+PROJECT_ID="ia-catalyst"
 IMAGE_NAME="raven-frontend"
 SERVICE_NAME="raven-frontend"
 REGION="us-central1"

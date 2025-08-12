@@ -6,7 +6,7 @@
 echo "🚀 Starting deployment of IA Catalyst Frontend..."
 
 # Set project ID
-PROJECT_ID="raven-ia-catalyst-prod"
+PROJECT_ID="ia-catalyst"
 SERVICE_NAME="raven-frontend"
 REGION="us-central1"
 

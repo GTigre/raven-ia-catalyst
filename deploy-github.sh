@@ -4,7 +4,7 @@
 
 set -e
 
-PROJECT_ID="raven-ia-catalyst-prod"
+PROJECT_ID="ia-catalyst"
 ZONE="us-central1-a"
 VM_NAME="raven-deployment-vm"
 REPO_URL="https://github.com/GTigre/raven-ia-catalyst.git"

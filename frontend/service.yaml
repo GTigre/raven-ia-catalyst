@@ -15,7 +15,7 @@ spec:
       containerConcurrency: 100
       timeoutSeconds: 300
       containers:
-      - image: gcr.io/raven-ia-catalyst-prod/raven-frontend:latest
+      - image: gcr.io/ia-catalyst/raven-frontend:latest
         ports:
         - containerPort: 3000
         env:
